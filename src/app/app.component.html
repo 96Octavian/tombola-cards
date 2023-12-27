@@ -1,0 +1,6 @@
+<div class="grid grid-cols-1 font-mono text-white text-sm text-center font-bold">
+    <app-tombola-card *ngFor="let card of cards" [card]="card"></app-tombola-card>
+    <button type="button"
+        class="m-6 bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-lg px-5 py-2.5 text-center me-2 mb-2 justify-self-center" (click)="addCard()">Aggiungi
+        una cartella</button>
+</div>
