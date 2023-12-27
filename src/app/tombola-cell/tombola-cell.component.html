@@ -1,6 +1,6 @@
-<div class="p-4 rounded-lg shadow-lg select-none" [class.bg-fuchsia-500]="marked" [class.bg-indigo-400]="!marked"
-    [class.bg-stripes-pink]="!hasValue()" [class.hover:cursor-pointer]="hasValue()"
-    [class.transparent-text]="!hasValue()" [class.hover:cursor-not-allowed]="!hasValue()"
-    [class.pointer-events-none]="!hasValue()" (click)="toggleMarked()">
-    {{ number }}
+<div class="py-3 rounded-lg shadow-lg select-none" [class.bg-fuchsia-500]="cell.IsCalled" [class.bg-indigo-400]="!cell.IsCalled"
+    [class.bg-stripes-pink]="!cell.IsValid" [class.hover:cursor-pointer]="cell.IsValid"
+    [class.transparent-text]="!cell.IsValid" [class.hover:cursor-not-allowed]="!cell.IsValid"
+    [class.pointer-events-none]="!cell.IsValid" (click)="ToggleCall()">
+    {{ cell.Value }}
 </div>

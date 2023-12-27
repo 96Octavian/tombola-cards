@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { TombolaCell } from '../tombola-cell/tombola-cell.component';
 
 export class TombolaCard {
-  private rows: number[][] = [];
+  private cells: TombolaCell[][] = [];
   private rowCount: number = 3;
   private colCount: number = 9;
 
@@ -9,8 +10,8 @@ export class TombolaCard {
     this.generateCard();
   }
 
-  public get Cells(): number[] {
-    return this.rows.flat();
+  public get Cells(): TombolaCell[] {
+    return this.cells.flat();
   }
   public get RowCount(): number {
     return this.rowCount;
@@ -20,7 +21,7 @@ export class TombolaCard {
   }
 
   private generateCard(): void {
-    this.rows = Array.from(Array(this.rowCount), _ => Array(this.colCount).fill(0));
+    let rows = Array.from(Array(this.rowCount), _ => Array(this.colCount).fill(0));
 
     for (let row = 0; row < 3; row++) {
       let vals: number[] = [];
@@ -32,22 +33,24 @@ export class TombolaCard {
           ten = Math.floor(Math.random() * (9 - 1) + 1)
         }
         let val = unit + ten * 10;
-        if (this.rows.flat().includes(val))
+        if (rows.flat().includes(val))
           continue
         vals.push(val)
         tens.push(ten)
       }
       let unit = Math.floor(Math.random() * (10 - 1) + 1)
-      while (this.rows.flat().includes(unit))
+      while (rows.flat().includes(unit))
         unit = Math.floor(Math.random() * (10 - 1) + 1)
-      this.rows[row][0] = unit
+      rows[row][0] = unit
       tens.forEach((v, i) => {
-        this.rows[row][v] = vals[i]
+        rows[row][v] = vals[i]
       })
     }
 
+    rows.forEach((row, i) => {
+      this.cells.push(row.map(val => new TombolaCell(val)));
+    })
 
-    console.log(this.rows)
   }
 }
 
