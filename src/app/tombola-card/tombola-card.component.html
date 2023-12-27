@@ -1,0 +1,5 @@
+<div class="p-6 m-6 bg-slate-100 border border-gray-300 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="grid grid-cols-9 gap-4 leading-6 bg-stripes-fuchsia rounded-lg">
+        <app-tombola-cell *ngFor="let cell of card.Cells" [number]="cell"></app-tombola-cell>
+    </div>
+</div>

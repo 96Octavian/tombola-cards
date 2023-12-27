@@ -1,0 +1,6 @@
+<div class="p-4 rounded-lg shadow-lg select-none" [class.bg-fuchsia-500]="marked" [class.bg-indigo-400]="!marked"
+    [class.bg-stripes-pink]="!hasValue()" [class.hover:cursor-pointer]="hasValue()"
+    [class.transparent-text]="!hasValue()" [class.hover:cursor-not-allowed]="!hasValue()"
+    [class.pointer-events-none]="!hasValue()" (click)="toggleMarked()">
+    {{ number }}
+</div>
