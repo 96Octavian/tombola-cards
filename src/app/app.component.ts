@@ -15,9 +15,12 @@ export class AppComponent {
 
   public addCard(): void {
     this.creationError = false;
-    let card = new TombolaCard();
-    this.creationError = !card.Cells.some(cell => cell.IsValid)
-    if (!this.creationError)
+    try {
+      let card = new TombolaCard();
       this.cards.push(card)
+    }
+    catch {
+      this.creationError = true;
+    }
   }
 }
