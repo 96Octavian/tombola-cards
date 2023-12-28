@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 export class TombolaCell {
   constructor(private value: number, private isCalled: boolean = false, private isUsed: boolean = false) { }
   public get Value(): number {
-    return this.value ;
+    return this.value;
   }
   public get IsCalled(): boolean {
     return this.isCalled
@@ -41,9 +41,9 @@ export class TombolaCellComponent {
   @Input() public cell!: TombolaCell;
 
   public ToggleCell(): void {
-    if (!this.cell.IsValid)
+    if (!this.cell.IsValid) {
       return
-    else if (this.cell.IsUsed) {
+    } else if (this.cell.IsUsed) {
       this.cell.ToggleCall();
     }
     else if (this.cell.IsCalled) {

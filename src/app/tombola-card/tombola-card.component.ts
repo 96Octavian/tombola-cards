@@ -102,7 +102,7 @@ export class TombolaCard {
     })
     while (tens.length < 5) {
       let ten = this.getRandomInt(0, 9);
-      while (tens.includes(ten)){
+      while (tens.includes(ten)) {
         att.Attempt();
         ten = this.getRandomInt(0, 9)
       }

@@ -2,8 +2,7 @@
     <div *ngFor="let card of cards">
         <app-tombola-card [card]="card"></app-tombola-card>
     </div>
-    <div role="alert"
-        [ngClass]="{
+    <div role="alert" [ngClass]="{
             'm-6 rounded-lg px-5 py-2.5 text-center me-2 mb-2 justify-self-center animate-once': true,
             'animate-jump-in': creationError,
             'animate-flip-up animate-once animate-duration-[250ms] animate-ease-linear animate-reverse hidden': !creationError
