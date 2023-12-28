@@ -4,10 +4,11 @@ import { TombolaCell } from '../tombola-cell/tombola-cell.component';
 class Attempt {
   private attemptsCount: number = 0;
   constructor(private max_attempts: number = 25) { }
-  public Attempt(): void {
+  public Attempt(): boolean {
     this.attemptsCount++;
     if (this.attemptsCount >= this.max_attempts)
       throw new Error("Too many attempts: " + this.attemptsCount);
+    return true
   }
 }
 
