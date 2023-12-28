@@ -1,6 +1,17 @@
-<div class="py-3 rounded-lg shadow-lg select-none" [class.bg-fuchsia-500]="cell.IsCalled" [class.bg-indigo-400]="!cell.IsCalled"
+<!-- <div class="py-3 rounded-lg shadow-lg select-none" [class.bg-fuchsia-500]="cell.IsCalled" [class.bg-indigo-400]="!cell.IsCalled"
     [class.bg-stripes-pink]="!cell.IsValid" [class.hover:cursor-pointer]="cell.IsValid"
     [class.transparent-text]="!cell.IsValid" [class.hover:cursor-not-allowed]="!cell.IsValid"
     [class.pointer-events-none]="!cell.IsValid" (click)="ToggleCall()">
+    {{ cell.Value }}
+</div> -->
+<div class="py-3 rounded-lg shadow-lg select-none"
+    [ngClass]="{
+        'bg-stripes-pink transparent-text hover:cursor-not-allowed pointer-events-none': !cell.IsValid,
+        'hover:cursor-pointer': cell.IsValid,
+        'bg-indigo-400': !cell.IsCalled,
+        'bg-fuchsia-500': cell.IsCalled && !cell.IsUsed, 
+        'bg-gradient-to-r from-yellow-100 via-yellow-300 to-yellow-500 text-gray-800': cell.IsUsed
+    }"
+    (click)="ToggleCell()">
     {{ cell.Value }}
 </div>

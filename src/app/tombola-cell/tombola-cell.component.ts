@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 export class TombolaCell {
   constructor(private value: number, private isCalled: boolean = false, private isUsed: boolean = false) { }
   public get Value(): number {
-    return this.value != 0 ? this.value : NaN;
+    return this.value ;
   }
   public get IsCalled(): boolean {
     return this.isCalled
@@ -18,13 +18,16 @@ export class TombolaCell {
   public Call(): void {
     this.isCalled = true;
   }
-  public ToggleCall(): void{
+  public ToggleCall(): void {
     this.isCalled = !this.isCalled;
+    if (!this.isCalled)
+      this.isUsed = false;
   }
   public Use(): void {
-    this.isUsed = true;
+    if (this.isCalled)
+      this.isUsed = true;
   }
-  public ToggleUse(): void{
+  public ToggleUse(): void {
     this.isUsed = !this.isUsed;
   }
 }
@@ -37,10 +40,18 @@ export class TombolaCell {
 export class TombolaCellComponent {
   @Input() public cell!: TombolaCell;
 
-  public ToggleCall(): void {
-    if (this.cell.IsValid)
+  public ToggleCell(): void {
+    if (!this.cell.IsValid)
+      return
+    else if (this.cell.IsUsed) {
       this.cell.ToggleCall();
-    console.log("Used: " + this.cell.IsUsed)
+    }
+    else if (this.cell.IsCalled) {
+      this.cell.Use();
+    }
+    else {
+      this.cell.Call()
+    }
   }
 
 }

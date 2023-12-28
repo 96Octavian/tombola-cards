@@ -11,7 +11,16 @@ export class AppComponent {
 
   cards: TombolaCard[] = []
 
-  public addCard():void{
-    this.cards.push(new TombolaCard())
+  creationError: boolean = false;
+
+  public addCard(): void {
+    this.creationError = false;
+    try {
+      let card = new TombolaCard();
+      this.cards.push(card)
+    }
+    catch {
+      this.creationError = true;
+    }
   }
 }

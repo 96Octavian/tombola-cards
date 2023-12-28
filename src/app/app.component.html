@@ -2,6 +2,19 @@
     <div *ngFor="let card of cards">
         <app-tombola-card [card]="card"></app-tombola-card>
     </div>
+    <div role="alert"
+        [ngClass]="{
+            'm-6 rounded-lg px-5 py-2.5 text-center me-2 mb-2 justify-self-center animate-once': true,
+            'animate-jump-in': creationError,
+            'animate-flip-up animate-once animate-duration-[250ms] animate-ease-linear animate-reverse hidden': !creationError
+        }">
+        <div class="bg-red-400 text-white font-bold rounded-t px-4 py-2">
+            Errore
+        </div>
+        <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+            <p>C'è stato un problema nel creare una cartella. Riprova</p>
+        </div>
+    </div>
     <button type="button"
         class="m-6 bg-gradient-to-r from-indigo-400 to-fuchsia-500 rounded-lg px-5 py-2.5 text-center me-2 mb-2 justify-self-center"
         (click)="addCard()">Aggiungi una cartella</button>
